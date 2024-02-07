@@ -19,11 +19,7 @@ const morgan = require("morgan");
 ///////////////////////////////
 // DATABASE CONNECTION
 ////////////////////////////////
-// Establish Connection
-mongoose.connect(MONGODB_URL, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-});
+mongoose.connect(process.env.MONGODB_URL)
 // Connection Events
 mongoose.connection
   .on("open", () => console.log("Your are connected to mongoose"))
