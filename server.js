@@ -19,12 +19,21 @@ const morgan = require("morgan");
 ///////////////////////////////
 // DATABASE CONNECTION
 ////////////////////////////////
-mongoose.connect(process.env.MONGODB_URL)
-// Connection Events
-mongoose.connection
-  .on("open", () => console.log("Your are connected to mongoose"))
-  .on("close", () => console.log("Your are disconnected from mongoose"))
-  .on("error", (error) => console.log(error));
+
+
+  async function startServer() {
+    try {
+      await mongoose.connect(process.env.MONGODB_URL);
+      console.log("Connected to MongoDB");
+  
+      // Rest of your server setup code
+  
+    } catch (error) {
+      console.error("MongoDB connection error:", error);
+    }
+  }
+  
+  startServer();
 
 ///////////////////////////////
 // MODELS
